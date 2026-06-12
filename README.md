@@ -43,7 +43,23 @@ Then open http://localhost:8000
 
 ## Next Steps / Customization
 
-- **Real form submissions**: Replace the simulated form handler with Formspree, Netlify Forms, or your own backend.
+- **Real form submissions (to info@fdmmd.com)**: The contact form at the bottom is now wired to support real email delivery via Formspree.
+
+  **How to activate real emails:**
+
+  1. Go to [https://formspree.io](https://formspree.io) and sign up for a free account.
+  2. Create a new form (it will give you an endpoint like `https://formspree.io/f/abc123xyz`).
+  3. Open `index.html` and replace `YOUR_FORM_ID_HERE` in the form's `action` attribute with your actual ID.
+  4. In the Formspree dashboard for that form:
+     - Set the primary email recipient to `info@fdmmd.com`
+     - (Optional) Add any other recipients
+  5. Save and commit/push the change.
+
+  Once configured, when someone submits the "Submit Request" form, the data will be emailed to `info@fdmmd.com` (with a nice subject line). The form uses AJAX so visitors stay on the page and see a success message.
+
+  The form already includes proper field names, a subject line, and a honeypot for basic spam protection.
+
+  If you prefer another service (Netlify Forms, Getform, etc.), the structure is standard HTML form POST and easy to adapt.
 - **Images / Branding**: Add your actual logo and professional photography (hero image, team, office).
 - **Additional pages**: The current site is a polished single-page experience. If you prefer separate pages (/services, /about, etc.), we can split it easily.
 - **Analytics / Tracking**: Add Google Analytics, Hotjar, etc.

@@ -572,16 +572,28 @@
                 
                 <!-- Contact Form -->
                 <div class="lg:col-span-7">
-                    <form id="contact-form" class="space-y-5">
+                    <!-- 
+                        REAL EMAIL SUBMISSIONS:
+                        This form is wired for Formspree (or similar service).
+                        1. Go to https://formspree.io, create a free account, and make a new form.
+                        2. Copy your form endpoint (looks like https://formspree.io/f/xxxxxxxx)
+                        3. Replace "YOUR_FORM_ID_HERE" below with your actual ID.
+                        4. In Formspree dashboard, set the "Email" to info@fdmmd.com (or add it as recipient).
+                        Submissions will then be emailed to info@fdmmd.com.
+                    -->
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="space-y-5">
+                        <!-- Hidden fields for Formspree -->
+                        <input type="hidden" name="_subject" value="New FDM Website Inquiry - Medical Billing Request">
+                        <input type="text" name="_gotcha" style="display:none"> <!-- Honeypot anti-spam -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 mb-1.5">Full Name</label>
-                                <input type="text" id="name" required 
+                                <input type="text" id="name" name="name" required 
                                        class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm">
                             </div>
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 mb-1.5">Practice / Organization</label>
-                                <input type="text" id="practice" required 
+                                <input type="text" id="practice" name="practice" required 
                                        class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm">
                             </div>
                         </div>
@@ -589,19 +601,19 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 mb-1.5">Email Address</label>
-                                <input type="email" id="email" required 
+                                <input type="email" id="email" name="_replyto" required 
                                        class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm">
                             </div>
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 mb-1.5">Phone Number</label>
-                                <input type="tel" id="phone" 
+                                <input type="tel" id="phone" name="phone" 
                                        class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm">
                             </div>
                         </div>
                         
                         <div>
                             <label class="block text-xs font-medium text-slate-500 mb-1.5">How can we help you?</label>
-                            <select id="service-interest" class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm text-slate-700">
+                            <select id="service-interest" name="service" class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm text-slate-700">
                                 <option value="">Select a primary area of interest</option>
                                 <option value="Credentialing">Provider Credentialing &amp; Enrollment</option>
                                 <option value="Billing">Medical Billing &amp; Coding</option>
@@ -613,7 +625,7 @@
                         
                         <div>
                             <label class="block text-xs font-medium text-slate-500 mb-1.5">Additional details (optional)</label>
-                            <textarea id="message" rows="4" placeholder="Number of providers, current challenges, timeline, etc."
+                            <textarea id="message" name="message" rows="4" placeholder="Number of providers, current challenges, timeline, etc."
                                       class="form-input w-full resize-y bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-3xl text-sm"></textarea>
                         </div>
                         
@@ -762,37 +774,95 @@
             });
         }
         
-        // Contact form handler
+        // Contact form handler - supports both simulation (for testing) and real Formspree submissions
         function initContactForm() {
             const form = document.getElementById('contact-form');
             const successMsg = document.getElementById('form-success');
-            
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Basic validation already handled by 'required'
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = `<span>Submitting...</span>`;
-                
-                // Simulate network request
-                setTimeout(() => {
-                    form.reset();
-                    submitBtn.style.display = 'none';
-                    successMsg.classList.remove('hidden');
-                    successMsg.classList.add('flex');
-                    
-                    // Optional: reset form state after some time
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Create an error message element if it doesn't exist
+            let errorMsg = document.getElementById('form-error');
+            if (!errorMsg) {
+                errorMsg = document.createElement('div');
+                errorMsg.id = 'form-error';
+                errorMsg.className = 'hidden mt-4 text-sm flex items-center gap-x-2 px-1 py-2 text-red-600';
+                errorMsg.innerHTML = `<i class="fa-solid fa-exclamation-circle"></i> <span>Something went wrong. Please try again or email us directly at info@fdmmd.com.</span>`;
+                form.appendChild(errorMsg);
+            }
+
+            form.addEventListener('submit', async function(e) {
+                const action = form.getAttribute('action') || '';
+                const isPlaceholder = action.includes('YOUR_FORM_ID_HERE') || !action;
+
+                if (isPlaceholder) {
+                    // Simulation mode (no real endpoint configured yet)
+                    e.preventDefault();
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = `<span>Submitting...</span>`;
+
                     setTimeout(() => {
-                        submitBtn.style.display = 'flex';
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalText;
-                        successMsg.classList.add('hidden');
-                        successMsg.classList.remove('flex');
-                    }, 6500);
-                }, 850);
+                        form.reset();
+                        submitBtn.style.display = 'none';
+                        successMsg.classList.remove('hidden');
+                        successMsg.classList.add('flex');
+                        errorMsg.classList.add('hidden');
+
+                        setTimeout(() => {
+                            submitBtn.style.display = 'flex';
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnText;
+                            successMsg.classList.add('hidden');
+                            successMsg.classList.remove('flex');
+                        }, 6500);
+                    }, 850);
+                    return;
+                }
+
+                // Real submission mode (Formspree or similar)
+                // We let the browser handle the POST by default, but we enhance with fetch for better UX (no page reload)
+                e.preventDefault();
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span>Sending...</span>`;
+                successMsg.classList.add('hidden');
+                errorMsg.classList.add('hidden');
+
+                try {
+                    const formData = new FormData(form);
+                    
+                    const response = await fetch(action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        form.reset();
+                        submitBtn.style.display = 'none';
+                        successMsg.classList.remove('hidden');
+                        successMsg.classList.add('flex');
+                        
+                        // Reset button after a while in case user wants to submit again
+                        setTimeout(() => {
+                            submitBtn.style.display = 'flex';
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnText;
+                            successMsg.classList.add('hidden');
+                            successMsg.classList.remove('flex');
+                        }, 8000);
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (err) {
+                    console.error('Form submission error:', err);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                    errorMsg.classList.remove('hidden');
+                    errorMsg.classList.add('flex');
+                }
             });
         }
         
