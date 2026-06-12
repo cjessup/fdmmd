@@ -846,12 +846,31 @@
                             successMsg.classList.remove('flex');
                         }, 8000);
                     } else {
-                        throw new Error('Form submission failed');
+                        // Try to read the actual error from Formspree
+                        let errorInfo = 'Form submission failed';
+                        try {
+                            const errorData = await response.json();
+                            console.error('Formspree response error:', errorData);
+                            if (errorData.error) errorInfo = errorData.error;
+                            else if (errorData.message) errorInfo = errorData.message;
+                            else errorInfo = `HTTP ${response.status} from Formspree`;
+                        } catch (parseErr) {
+                            console.error('Could not parse Formspree error response');
+                            errorInfo = `HTTP ${response.status} from Formspree`;
+                        }
+                        throw new Error(errorInfo);
                     }
                 } catch (err) {
                     console.error('Form submission error:', err);
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalBtnText;
+                    
+                    // Show a more helpful error message
+                    const friendlyMessage = err.message.includes('Formspree') || err.message.includes('HTTP') 
+                        ? err.message 
+                        : 'Something went wrong. Please try again or email info@fdmmd.com directly.';
+                    
+                    errorMsg.innerHTML = `<i class="fa-solid fa-exclamation-circle"></i> <span>Submission failed: ${friendlyMessage}</span>`;
                     errorMsg.classList.remove('hidden');
                     errorMsg.classList.add('flex');
                 }
