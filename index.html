@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDM | Medical Billing &amp; Practice Management | Financial Data Management, Inc.</title>
+    <meta name="description" content="Expert medical billing, credentialing, coding, collections, and compliance since 1988. Trusted practice management for physician groups. HBMA certified.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        :root {
+            --primary: #0f172a;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            line-height: 1.05;
+        }
+
+        .nav-link {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover {
+            color: #0d9488;
+        }
+
+        .section-header {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(to right, #0d9488, #14b8a6);
+            border-radius: 3px;
+        }
+
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(15 23 42 / 0.1), 0 8px 10px -6px rgb(15 23 42 / 0.1);
+        }
+
+        .professional-shadow {
+            box-shadow: 0 10px 15px -3px rgb(15 23 42 / 0.08), 0 4px 6px -4px rgb(15 23 42 / 0.08);
+        }
+
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .modern-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modern-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgb(13 148 136 / 0.3), 0 4px 6px -4px rgb(13 148 136 / 0.3);
+        }
+
+        .nav-active {
+            color: #0d9488;
+            font-weight: 600;
+        }
+
+        .trust-badge {
+            transition: all 0.2s ease;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+        }
+
+        .subtle-grid {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .metric {
+            transition: transform 0.3s ease;
+        }
+
+        .metric:hover {
+            transform: scale(1.03);
+        }
+
+        .footer-link {
+            transition: color 0.2s ease;
+        }
+        
+        .footer-link:hover {
+            color: #14b8a6;
+        }
+
+        .form-input {
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #14b8a6;
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+        }
+
+        .nav-scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+        }
+
+        @media (max-width: 768px) {
+            .heading-serif {
+                font-size: 2.35rem;
+                line-height: 1.1;
+            }
+        }
+    </style>
+</head>
+<body class="tail-container bg-slate-50 text-slate-800">
+    <!-- NAVBAR -->
+    <nav id="navbar" class="bg-white border-b border-slate-200 sticky top-0 z-50 transition-all">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="px-6 lg:px-10 py-4 flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="flex items-center justify-center w-10 h-10 bg-slate-900 rounded-xl">
+                        <span class="text-white font-bold text-2xl tracking-tighter">FDM</span>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-xl tracking-tight text-slate-900">Financial Data Management</div>
+                        <div class="text-[10px] text-slate-500 -mt-1 font-medium tracking-[1px]">EST. 1988</div>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+                    <a href="#services" class="nav-link text-slate-600 hover:text-slate-900">Services</a>
+                    <a href="#about" class="nav-link text-slate-600 hover:text-slate-900">About</a>
+                    <a href="#technology" class="nav-link text-slate-600 hover:text-slate-900">Technology</a>
+                    <a href="#compliance" class="nav-link text-slate-600 hover:text-slate-900">Compliance</a>
+                    <a href="#contact" class="nav-link text-slate-600 hover:text-slate-900">Contact</a>
+                </div>
+
+                <!-- Desktop CTA -->
+                <div class="hidden md:flex items-center gap-x-3">
+                    <a href="tel:7148248840" 
+                       class="px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 rounded-xl flex items-center gap-x-2 transition-colors">
+                        <i class="fa-solid fa-phone text-teal-600"></i>
+                        <span>(714) 824-8840</span>
+                    </a>
+                    <a href="#contact" 
+                       class="modern-btn px-6 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold rounded-2xl flex items-center gap-x-2 shadow-sm">
+                        <span>Request Consultation</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                        class="md:hidden w-11 h-11 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-2xl transition-colors"
+                        aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-6 py-6 flex flex-col gap-y-1 text-base">
+                <a href="#services" class="mobile-nav-link px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-2xl font-medium">Services</a>
+                <a href="#about" class="mobile-nav-link px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-2xl font-medium">About</a>
+                <a href="#technology" class="mobile-nav-link px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-2xl font-medium">Technology</a>
+                <a href="#compliance" class="mobile-nav-link px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-2xl font-medium">Compliance</a>
+                <a href="#contact" class="mobile-nav-link px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-2xl font-medium">Contact</a>
+                
+                <div class="pt-4 mt-2 border-t border-slate-100 flex flex-col gap-3 px-1">
+                    <a href="tel:7148248840" 
+                       class="flex items-center justify-center gap-x-2 py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold rounded-2xl text-sm">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Call (714) 824-8840</span>
+                    </a>
+                    <a href="#contact" 
+                       class="flex items-center justify-center gap-x-2 py-3 px-4 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-2xl text-sm">
+                        Request Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-bg text-white relative overflow-hidden">
+        <div class="subtle-grid absolute inset-0 opacity-50"></div>
+        
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-10 pt-16 pb-20 md:pt-20 md:pb-24 relative">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-7 lg:col-span-7">
+                    <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-sm px-4 py-1 rounded-3xl text-sm font-medium tracking-wider mb-6 border border-white/20">
+                        <div class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
+                        <span>SINCE 1988 • HBMA CERTIFIED</span>
+                    </div>
+                    
+                    <h1 class="heading-serif text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tighter mb-6">
+                        Medical billing<br>done right.
+                    </h1>
+                    
+                    <p class="max-w-lg text-xl text-slate-300 mb-9 leading-relaxed">
+                        Professional practice management and revenue cycle services for physician groups. 
+                        Reliable, compliant, and results-driven since 1988.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" 
+                           class="modern-btn inline-flex items-center justify-center gap-x-3 bg-white text-slate-900 font-semibold px-8 py-4 rounded-3xl text-base shadow-xl hover:shadow-2xl transition-all active:scale-[0.985]">
+                            <span>Request a Consultation</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#services" 
+                           class="inline-flex items-center justify-center gap-x-3 border border-white/40 hover:bg-white/10 font-semibold px-8 py-4 rounded-3xl text-base transition-all">
+                            Explore Services
+                        </a>
+                    </div>
+                    
+                    <div class="mt-8 flex items-center gap-x-6 text-sm">
+                        <div class="flex items-center -space-x-2">
+                            <div class="w-7 h-7 bg-white/90 rounded-full ring-2 ring-slate-900/40"></div>
+                            <div class="w-7 h-7 bg-white/80 rounded-full ring-2 ring-slate-900/40"></div>
+                            <div class="w-7 h-7 bg-white/70 rounded-full ring-2 ring-slate-900/40"></div>
+                        </div>
+                        <div class="text-slate-400 text-sm">Trusted by 15+ medical groups</div>
+                    </div>
+                </div>
+                
+                <!-- Hero visual / trust panel -->
+                <div class="md:col-span-5 lg:col-span-5">
+                    <div class="bg-white/95 backdrop-blur-md rounded-3xl p-7 text-slate-800 professional-shadow border border-white/60">
+                        <div class="flex items-start gap-4">
+                            <div>
+                                <div class="text-teal-600">
+                                    <i class="fa-solid fa-shield-halved text-3xl"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-semibold text-lg tracking-tight">Full-Service Revenue Cycle Management</div>
+                                <div class="text-slate-600 mt-1 leading-snug text-[15px]">
+                                    Credentialing • Billing • Coding • Collections • Compliance • Reporting
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-x-6 gap-y-4 mt-6 text-sm">
+                                    <div>
+                                        <div class="text-teal-600 font-semibold">35+</div>
+                                        <div class="text-slate-500 text-xs tracking-wider">YEARS EXPERIENCE</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-teal-600 font-semibold">2</div>
+                                        <div class="text-slate-500 text-xs tracking-wider">OFFICES • CA &amp; ID</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- TRUST / STATS BAR -->
+    <div class="bg-white border-b border-slate-200">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-10 py-5">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-y-6 text-center">
+                <div class="flex flex-col items-center md:border-r border-slate-200">
+                    <div class="text-3xl font-semibold tracking-tighter text-slate-900">1988</div>
+                    <div class="text-xs font-medium tracking-[1.25px] text-slate-500 mt-0.5">FOUNDED</div>
+                </div>
+                <div class="flex flex-col items-center md:border-r border-slate-200">
+                    <div class="text-3xl font-semibold tracking-tighter text-slate-900">HBMA</div>
+                    <div class="text-xs font-medium tracking-[1.25px] text-slate-500 mt-0.5">CERTIFIED MEMBER</div>
+                </div>
+                <div class="flex flex-col items-center md:border-r border-slate-200">
+                    <div class="text-3xl font-semibold tracking-tighter text-slate-900">15+</div>
+                    <div class="text-xs font-medium tracking-[1.25px] text-slate-500 mt-0.5">MEDICAL GROUPS SERVED</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-3xl font-semibold tracking-tighter text-slate-900">100%</div>
+                    <div class="text-xs font-medium tracking-[1.25px] text-slate-500 mt-0.5">COMPLIANCE FOCUSED</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services" class="max-w-screen-2xl mx-auto px-6 lg:px-10 pt-16 pb-12">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-y-3 mb-10">
+            <div>
+                <div class="uppercase text-teal-600 text-xs tracking-[2px] font-semibold mb-1">WHAT WE DELIVER</div>
+                <h2 class="text-4xl tracking-tighter font-semibold text-slate-900 section-header">Comprehensive Services</h2>
+            </div>
+            <p class="max-w-md text-slate-600 text-[15px]">
+                A complete suite of medical billing and practice management solutions designed to maximize revenue and minimize administrative burden.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <!-- Service 1 -->
+            <div class="service-card bg-white rounded-3xl p-6 border border-slate-200 professional-shadow flex flex-col">
+                <div class="w-11 h-11 flex items-center justify-center bg-teal-100 text-teal-600 rounded-2xl mb-4">
+                    <i class="fa-solid fa-id-card text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-xl tracking-tight mb-2">Provider Enrollment &amp; Credentialing</h3>
+                <p class="text-slate-600 text-[15px] leading-relaxed flex-1">We maintain a complete database for provider enrollment, government contracts, insurance carriers, and hospital credentialing. All applications prepared, documents scanned and routed for signature.</p>
+                <div class="text-xs font-medium text-teal-700 mt-5 pt-4 border-t border-slate-100">Fast turnaround • Full tracking</div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card bg-white rounded-3xl p-6 border border-slate-200 professional-shadow flex flex-col">
+                <div class="w-11 h-11 flex items-center justify-center bg-teal-100 text-teal-600 rounded-2xl mb-4">
+                    <i class="fa-solid fa-file-invoice-dollar text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-xl tracking-tight mb-2">Medical Billing &amp; Coding</h3>
+                <p class="text-slate-600 text-[15px] leading-relaxed flex-1">Accurate, timely claim submission and expert coding guidance. Our certified team ensures compliance with current regulations while optimizing reimbursement for every specialty we serve.</p>
+                <div class="text-xs font-medium text-teal-700 mt-5 pt-4 border-t border-slate-100">Coding audits included</div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card bg-white rounded-3xl p-6 border border-slate-200 professional-shadow flex flex-col">
+                <div class="w-11 h-11 flex items-center justify-center bg-teal-100 text-teal-600 rounded-2xl mb-4">
+                    <i class="fa-solid fa-laptop-medical text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-xl tracking-tight mb-2">Electronic Billing &amp; Payments</h3>
+                <p class="text-slate-600 text-[15px] leading-relaxed flex-1">Direct electronic claims submission and funds transfer (EFT) from Medicare, Blue Cross, United Healthcare, Medi-Cal, Blue Shield, Aetna and many other payers. Faster payments, fewer errors.</p>
+                <div class="text-xs font-medium text-teal-700 mt-5 pt-4 border-t border-slate-100">Real-time payer connectivity</div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card bg-white rounded-3xl p-6 border border-slate-200 professional-shadow flex flex-col">
+                <div class="w-11 h-11 flex items-center justify-center bg-teal-100 text-teal-600 rounded-2xl mb-4">
+                    <i class="fa-solid fa-handshake text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-xl tracking-tight mb-2">Collections &amp; Appeals</h3>
+                <p class="text-slate-600 text-[15px] leading-relaxed flex-1">Aggressive yet professional follow-up including appeals, dedicated collection calls, and on-site payer visits ("road trips") when necessary. Strong established relationships deliver superior results.</p>
+                <div class="text-xs font-medium text-teal-700 mt-5 pt-4 border-t border-slate-100">"We get paid when you get paid"</div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card bg-white rounded-3xl p-6 border border-slate-200 professional-shadow flex flex-col">
+                <div class="w-11 h-11 flex items-center justify-center bg-teal-100 text-teal-600 rounded-2xl mb-4">
+                    <i class="fa-solid fa-chart-line text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-xl tracking-tight mb-2">Customized Financial Reporting</h3>
+                <p class="text-slate-600 text-[15px] leading-relaxed flex-1">Detailed tracking and reporting through our advanced billing system. Request the exact reports that matter most to your practice — from AR aging to payer performance and productivity metrics.</p>
+                <div class="text-xs font-medium text-teal-700 mt-5 pt-4 border-t border-slate-100">Actionable insights, on demand</div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card bg-white rounded-3xl p-6 border border-slate-200 professional-shadow flex flex-col">
+                <div class="w-11 h-11 flex items-center justify-center bg-teal-100 text-teal-600 rounded-2xl mb-4">
+                    <i class="fa-solid fa-user-check text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-xl tracking-tight mb-2">Patient Engagement</h3>
+                <p class="text-slate-600 text-[15px] leading-relaxed flex-1">Automated appointment confirmation calls and statements. We help reduce no-shows and improve patient collections while maintaining a professional and courteous patient experience.</p>
+                <div class="text-xs font-medium text-teal-700 mt-5 pt-4 border-t border-slate-100">Improved cash flow &amp; scheduling</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="bg-white border-t border-b border-slate-200">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-10 py-16">
+            <div class="grid md:grid-cols-12 gap-x-10 gap-y-10 items-start">
+                <div class="md:col-span-5 lg:col-span-5">
+                    <div class="uppercase text-teal-600 text-xs tracking-[2px] font-semibold mb-2">OUR FOUNDATION</div>
+                    <h2 class="text-4xl tracking-tighter font-semibold leading-none text-slate-900">A team you can<br>trust. Since 1988.</h2>
+                </div>
+                
+                <div class="md:col-span-7 lg:col-span-7 text-[15px] text-slate-600 leading-relaxed space-y-5">
+                    <p>Financial Data Management (FDM) is a full-service medical billing and practice management company offering a complete range of tailored services for physicians and their practices.</p>
+                    
+                    <p>We have delivered reliable results for over three decades. Our team stays current on every compliance and legislative development so your practice stays protected and optimized.</p>
+                    
+                    <p class="font-medium text-slate-700">We believe in a true team approach. You gain direct access to specialists in billing, coding, collections, and IT — all working together on your behalf.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t grid md:grid-cols-3 gap-6 text-sm">
+                <div>
+                    <div class="font-semibold mb-2 text-slate-900 flex items-center gap-x-2">
+                        <i class="fa-solid fa-users text-teal-600"></i>
+                        <span>Team of Experts</span>
+                    </div>
+                    <p class="text-slate-600">Dedicated account managers, certified coders, experienced collectors, and IT professionals who understand the full revenue cycle.</p>
+                </div>
+                <div>
+                    <div class="font-semibold mb-2 text-slate-900 flex items-center gap-x-2">
+                        <i class="fa-solid fa-building text-teal-600"></i>
+                        <span>Two Strategic Offices</span>
+                    </div>
+                    <p class="text-slate-600">Santa Ana, California and Coeur d’Alene, Idaho. Local presence with national payer expertise.</p>
+                </div>
+                <div>
+                    <div class="font-semibold mb-2 text-slate-900 flex items-center gap-x-2">
+                        <i class="fa-solid fa-handshake text-teal-600"></i>
+                        <span>Client-Centered Philosophy</span>
+                    </div>
+                    <p class="text-slate-600">"FDM can’t get paid until the client gets their money." We align our success directly with yours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNOLOGY -->
+    <section id="technology" class="max-w-screen-2xl mx-auto px-6 lg:px-10 py-16">
+        <div class="grid lg:grid-cols-12 gap-x-16 gap-y-10 items-center">
+            <div class="lg:col-span-5">
+                <div class="uppercase tracking-[2px] text-xs font-semibold text-teal-600 mb-2">POWERED BY TECHNOLOGY</div>
+                <h2 class="text-4xl tracking-tighter font-semibold text-slate-900 mb-4">State-of-the-art billing systems</h2>
+                <p class="text-slate-600 leading-relaxed text-[15px]">We leverage the powerful Medinformatix billing platform along with modern electronic connectivity to deliver precision, transparency, and speed.</p>
+                
+                <div class="mt-7 space-y-3 text-sm">
+                    <div class="flex gap-3 items-start">
+                        <i class="fa-solid fa-check text-teal-600 mt-1"></i>
+                        <div><span class="font-medium">Electronic Funds Transfer (EFT)</span> from all major payers</div>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <i class="fa-solid fa-check text-teal-600 mt-1"></i>
+                        <div><span class="font-medium">Detailed patient account tracking</span> at every stage</div>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <i class="fa-solid fa-check text-teal-600 mt-1"></i>
+                        <div><span class="font-medium">Fully customizable reporting</span> tailored to your needs</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-7">
+                <div class="bg-slate-900 text-white rounded-3xl p-8 md:p-9">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <div class="uppercase text-teal-400 tracking-widest text-xs font-medium mb-2">CORE PLATFORM</div>
+                            <div class="text-3xl font-semibold tracking-tighter">Medinformatix</div>
+                            <p class="mt-3 text-slate-300 text-[15px]">Enterprise-grade medical billing software trusted for its robust reporting and account visibility.</p>
+                        </div>
+                        <div class="text-sm text-slate-300 space-y-5 pt-1">
+                            <div>
+                                <div class="text-white font-medium">Real-time visibility</div>
+                                <div class="mt-1">Track every claim, payment, and adjustment with complete audit trails.</div>
+                            </div>
+                            <div>
+                                <div class="text-white font-medium">Custom reports on demand</div>
+                                <div class="mt-1">We build the reports that help you understand and improve your practice’s financial health.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPLIANCE -->
+    <section id="compliance" class="bg-slate-900 text-white">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-10 py-16">
+            <div class="grid md:grid-cols-12 gap-x-10 gap-y-8 items-center">
+                <div class="md:col-span-5">
+                    <div class="inline-flex items-center gap-x-2 text-teal-400 text-xs font-semibold tracking-[1.5px] mb-3">
+                        <i class="fa-solid fa-balance-scale"></i>
+                        <span>OUR #1 PRIORITY</span>
+                    </div>
+                    <h2 class="text-4xl tracking-tighter font-semibold leading-none">Compliance &amp;<br>Integrity First</h2>
+                </div>
+                <div class="md:col-span-7 text-slate-300 text-[15px] leading-relaxed">
+                    Compliance is not optional — it is the foundation of everything we do. We operate with complete honesty and ethics because doing the right thing is also the most effective way to protect revenue and reputation.
+                    <div class="mt-4 text-sm text-teal-300 font-medium">We perform continuous internal audits for accuracy and regulatory adherence.</div>
+                </div>
+            </div>
+            
+            <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                <div class="bg-white/5 rounded-3xl px-6 py-5 border border-white/10">
+                    <div class="font-semibold mb-1">HBMA Certified</div>
+                    <div class="text-slate-400">Active member of the Healthcare Billing &amp; Management Association.</div>
+                </div>
+                <div class="bg-white/5 rounded-3xl px-6 py-5 border border-white/10">
+                    <div class="font-semibold mb-1">Comprehensive Compliance Plan</div>
+                    <div class="text-slate-400">Documented policies, ongoing training, and regular internal reviews.</div>
+                </div>
+                <div class="bg-white/5 rounded-3xl px-6 py-5 border border-white/10">
+                    <div class="font-semibold mb-1">Specialty Association Memberships</div>
+                    <div class="text-slate-400">We maintain active participation across multiple medical specialty billing organizations.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATIONS PREVIEW -->
+    <section class="max-w-screen-2xl mx-auto px-6 lg:px-10 pt-14 pb-6">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+            <div>
+                <div class="text-xs uppercase tracking-[2px] text-teal-600 font-semibold">OFFICES</div>
+                <div class="font-semibold text-3xl tracking-tighter">California &amp; Idaho</div>
+            </div>
+            <a href="#contact" class="text-sm font-medium flex items-center gap-2 text-teal-700 hover:text-teal-600">
+                View full contact details <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-5">
+            <div class="border border-slate-200 rounded-3xl p-7 bg-white">
+                <div class="flex items-center gap-x-4">
+                    <div class="text-teal-600"><i class="fa-solid fa-location-dot text-2xl"></i></div>
+                    <div>
+                        <div class="font-semibold">Santa Ana, California</div>
+                        <div class="text-sm text-slate-500 mt-0.5">Phone: (714) 824-8840</div>
+                    </div>
+                </div>
+            </div>
+            <div class="border border-slate-200 rounded-3xl p-7 bg-white">
+                <div class="flex items-center gap-x-4">
+                    <div class="text-teal-600"><i class="fa-solid fa-location-dot text-2xl"></i></div>
+                    <div>
+                        <div class="font-semibold">Coeur d’Alene, Idaho</div>
+                        <div class="text-sm text-slate-500 mt-0.5">Phone available upon request</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / FINAL CTA -->
+    <section id="contact" class="max-w-screen-2xl mx-auto px-6 lg:px-10 pb-16">
+        <div class="bg-white border border-slate-200 rounded-3xl p-8 md:p-10 lg:p-12 shadow-sm">
+            <div class="grid lg:grid-cols-12 gap-x-12 gap-y-10">
+                <!-- Contact info -->
+                <div class="lg:col-span-5">
+                    <div class="uppercase text-teal-600 tracking-[1.5px] text-xs font-semibold">LET’S TALK</div>
+                    <h2 class="mt-1 text-4xl tracking-tighter font-semibold">Ready to optimize<br>your revenue cycle?</h2>
+                    
+                    <div class="mt-8 space-y-5 text-sm">
+                        <div>
+                            <div class="font-medium text-slate-900">Email</div>
+                            <a href="mailto:info@fdmmd.com" class="text-teal-700 hover:underline">info@fdmmd.com</a>
+                        </div>
+                        
+                        <div>
+                            <div class="font-medium text-slate-900">California</div>
+                            <a href="tel:7148248840" class="block text-slate-700 hover:text-teal-700">(714) 824-8840</a>
+                        </div>
+                        
+                        <div>
+                            <div class="font-medium text-slate-900">Idaho</div>
+                            <span class="text-slate-700">Coeur d’Alene office</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-9 text-xs text-slate-500 max-w-xs">
+                        A member of our team typically responds within one business day.
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-500 mb-1.5">Full Name</label>
+                                <input type="text" id="name" required 
+                                       class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-500 mb-1.5">Practice / Organization</label>
+                                <input type="text" id="practice" required 
+                                       class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-500 mb-1.5">Email Address</label>
+                                <input type="email" id="email" required 
+                                       class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-500 mb-1.5">Phone Number</label>
+                                <input type="tel" id="phone" 
+                                       class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-medium text-slate-500 mb-1.5">How can we help you?</label>
+                            <select id="service-interest" class="form-input w-full bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-2xl text-sm text-slate-700">
+                                <option value="">Select a primary area of interest</option>
+                                <option value="Credentialing">Provider Credentialing &amp; Enrollment</option>
+                                <option value="Billing">Medical Billing &amp; Coding</option>
+                                <option value="Collections">Collections &amp; Appeals</option>
+                                <option value="Full Service">Full Revenue Cycle Management</option>
+                                <option value="Other">Other / General Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-medium text-slate-500 mb-1.5">Additional details (optional)</label>
+                            <textarea id="message" rows="4" placeholder="Number of providers, current challenges, timeline, etc."
+                                      class="form-input w-full resize-y bg-slate-50 border border-slate-200 focus:bg-white px-4 py-3 rounded-3xl text-sm"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="modern-btn w-full sm:w-auto mt-1 flex items-center justify-center gap-x-3 bg-slate-900 hover:bg-black transition-colors text-white font-semibold py-[15px] px-9 rounded-3xl text-sm tracking-wider">
+                            <span>SUBMIT REQUEST</span>
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                        
+                        <div id="form-success" class="hidden mt-4 text-sm flex items-center gap-x-2 px-1 py-2 text-teal-700">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <span>Thank you. Your request has been received. We will contact you within one business day.</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 text-sm">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-10 py-12">
+            <div class="flex flex-col md:flex-row justify-between gap-y-10">
+                <div>
+                    <div class="flex items-center gap-x-3 mb-3">
+                        <div class="flex items-center justify-center w-8 h-8 bg-white/90 rounded-xl">
+                            <span class="text-slate-900 font-bold text-xl tracking-tighter">FDM</span>
+                        </div>
+                        <span class="font-semibold text-white tracking-tight text-lg">Financial Data Management, Inc.</span>
+                    </div>
+                    <div class="text-xs max-w-[240px]">Professional medical billing and practice management since 1988.</div>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-8 text-xs">
+                    <div>
+                        <div class="font-semibold text-white mb-2 tracking-wider">COMPANY</div>
+                        <div class="space-y-[7px]">
+                            <a href="#about" class="footer-link block">About Us</a>
+                            <a href="#compliance" class="footer-link block">Compliance</a>
+                            <a href="#technology" class="footer-link block">Technology</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-white mb-2 tracking-wider">SERVICES</div>
+                        <div class="space-y-[7px]">
+                            <a href="#services" class="footer-link block">Credentialing</a>
+                            <a href="#services" class="footer-link block">Billing &amp; Coding</a>
+                            <a href="#services" class="footer-link block">Collections</a>
+                            <a href="#services" class="footer-link block">Reporting</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-white mb-2 tracking-wider">CONTACT</div>
+                        <div class="space-y-[7px]">
+                            <a href="mailto:info@fdmmd.com" class="footer-link block">info@fdmmd.com</a>
+                            <a href="tel:7148248840" class="footer-link block">(714) 824-8840</a>
+                            <div>Santa Ana, CA &amp; Coeur d’Alene, ID</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 mt-12 pt-7 flex flex-col md:flex-row items-center justify-between gap-y-3 text-xs">
+                <div>© <span id="year"></span> Financial Data Management, Inc. All rights reserved.</div>
+                <div class="flex items-center gap-x-5">
+                    <span class="hidden sm:inline">HBMA Certified Member</span>
+                    <span class="text-white/30">•</span>
+                    <span>Confidential &amp; Professional</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind script configuration
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#14b8a6');
+        }
+        
+        // Mobile menu toggle
+        function initMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const icon = btn.querySelector('i');
+            
+            btn.addEventListener('click', () => {
+                const isOpen = !menu.classList.contains('hidden');
+                
+                if (isOpen) {
+                    menu.classList.add('hidden');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    menu.classList.remove('hidden');
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        }
+        
+        // Smooth scroll for nav links
+        function initSmoothScroll() {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        const navbarHeight = document.getElementById('navbar').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.scrollY - navbarHeight - 20;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Navbar scroll effect
+        function initNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('nav-scrolled', 'shadow-sm');
+                } else {
+                    navbar.classList.remove('nav-scrolled', 'shadow-sm');
+                }
+            });
+        }
+        
+        // Contact form handler
+        function initContactForm() {
+            const form = document.getElementById('contact-form');
+            const successMsg = document.getElementById('form-success');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation already handled by 'required'
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span>Submitting...</span>`;
+                
+                // Simulate network request
+                setTimeout(() => {
+                    form.reset();
+                    submitBtn.style.display = 'none';
+                    successMsg.classList.remove('hidden');
+                    successMsg.classList.add('flex');
+                    
+                    // Optional: reset form state after some time
+                    setTimeout(() => {
+                        submitBtn.style.display = 'flex';
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                        successMsg.classList.add('hidden');
+                        successMsg.classList.remove('flex');
+                    }, 6500);
+                }, 850);
+            });
+        }
+        
+        // Set dynamic year in footer
+        function initFooterYear() {
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        }
+        
+        // Optional: highlight active nav section
+        function initActiveNav() {
+            const sections = ['services', 'about', 'technology', 'compliance', 'contact'];
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            function updateActiveLink() {
+                let current = '';
+                const scrollPos = window.scrollY + 180;
+                
+                sections.forEach(id => {
+                    const section = document.getElementById(id);
+                    if (section && scrollPos >= section.offsetTop) {
+                        current = id;
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('nav-active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('nav-active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveLink);
+            // Run once on load
+            setTimeout(updateActiveLink, 300);
+        }
+        
+        // Keyboard accessibility improvements
+        function initAccessibility() {
+            // Allow escape key to close mobile menu
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const menu = document.getElementById('mobile-menu');
+                    const btn = document.getElementById('mobile-menu-btn');
+                    const icon = btn.querySelector('i');
+                    
+                    if (!menu.classList.contains('hidden')) {
+                        menu.classList.add('hidden');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        }
+        
+        // Main initialization
+        function initializeSite() {
+            initializeTailwind();
+            initMobileMenu();
+            initSmoothScroll();
+            initNavbarScroll();
+            initContactForm();
+            initFooterYear();
+            initActiveNav();
+            initAccessibility();
+            
+            // Small welcome console note (for developers)
+            console.log('%c[FDM] Professional modern site initialized successfully.', 'color:#64748b');
+        }
+        
+        // Boot
+        window.addEventListener('DOMContentLoaded', initializeSite);
+    </script>
+</body>
+</html>
